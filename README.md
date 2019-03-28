@@ -1,7 +1,6 @@
 # An example wordpress based website
 This is the simplest way to bring up a wordpress website, using witline (now witpass) wordpress image. You do not need anything fancy in this repository.
 
-
 # Repository structure:
 
 ```
@@ -29,6 +28,7 @@ $ tree
 ```
 
 # How to use this image:
+* Clone this repository on your computer, and save it with the name of the website you are going to setup, e.g. `example.com` . 
 * Setup a MySQL database to hold this site's database stuff, and/or keep the DB credentials handy.
 * Setup a persistent storage on the computer to hold this website's **uploads** . This location will be specified in `docker-compose.yml.localpc` and/or `docker-compose.yml.server` files, and will be mounted at `/var/www/html/wp-content/uploads` when the container is started using `docker-compose up -d` command. An example of this directory is: `/home/kamran/container_data/example.com/uploads` . You will need to make sure that you do a frequent backup of this location.
 * If you intend to download any custom plugins or themes which are actually in a private fit repository, then you need to provide your github username and a github token. You can create a github token just for this specific person against your github user. If you don't then you do not need to provide github_user or github_token. 
