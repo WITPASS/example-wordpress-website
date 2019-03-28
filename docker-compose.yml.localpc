@@ -1,15 +1,15 @@
 version: "3"
 services:
-  dgheating.online:
+  example.com:
     # If you want docker-compose to build an image instead of using a pre-built one,
     # then, use "build" instruction instead of "image". 
     # If a Dockerfile is present in the same repository, then 'build' is the BEST option to use.
     build: .
-    # image:  witline/wordpress-5.1.1-php7.3-apache
+    # image:  witline/wordpress-5.1.1-php-7.3-apache-2.4-v-1.0
     labels:
       - traefik.enable=false
       - traefik.port=80
-      - traefik.frontend.rule=Host:dgheating.online,www.dgheating.online
+      - traefik.frontend.rule=Host:example.com,www.example.com
       # Following is an example of using multiple hostnames in 'traefik.frontend.rule'
       # - traefik.frontend.rule=Host:example.witpass.co.uk,www.witpass.co.uk,witpass.co.uk
       # The following is just an example to show a combination of Host and PathPrefix rules.
@@ -18,12 +18,9 @@ services:
     env_file:
       - app.env
 
-    # You will need to create this 'web-root' directory yourself, after you clone the repository.
-    # This 'web-root' is not part of the git repository, and never will be,
-    # because it contains actual 'web content' or 'uplaods'.
-    # Adjust the path for your local work-computer.
+    # Adjust the path (on left hand side) according to the setup on your local work-computer.
     volumes:
-      - /home/kamran/tmp/dgheating.online/uploads:/var/www/html/wp-content/uploads
+      - /home/kamran/tmp/example.com/uploads:/var/www/html/wp-content/uploads
 
     # Disable ports directive when running on production system. Or,
     # Enable ports directive only on your local work computer.
