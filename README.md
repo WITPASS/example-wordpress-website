@@ -56,6 +56,10 @@ $ docker ps
 Check logs:
 ```
 $ docker logs -f <container-name|container-id>
+
+or
+
+$ docker-compose -f docker-compose.localpc logs -f
 ```
 
 Stop and remove a container using `docker-compose`:
