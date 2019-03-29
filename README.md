@@ -1,6 +1,14 @@
 # An example wordpress based website
 This is the simplest way to bring up a wordpress website, using witline (now witpass) wordpress image. You do not need anything fancy in this repository.
 
+## Features:
+* Ability to deploy a wordpress website in *immutable* way.
+* Plugins and themes are not stored in persistent storage.
+* Plugins and themes are spedified as configuration.
+* The only piece of data, you need to keep persistent - and take backup of - is the `wp-content/uploads` directory.
+
+**Note:** You are not stopped from experimenting with themes and plugins of your choice. You can install them through the WordPress admin panel of your website, **but** any plugins and themes installed this way will not survive container restart. After your experimentation, you add the pluing(s) and themes(s) of your choice in the related config files in this repository.
+
 # Repository structure:
 
 ```
@@ -26,6 +34,13 @@ $ tree
 3 directories, 13 files
 [kamran@kworkhorse example.com]$
 ```
+
+# Configuring plugins and themes:
+* Use `plugins/download.list` to specify the name and URL of the zip file for the plugin
+* Use `plugins/gitrepo.list` to specify the name and URL of the git repository for the plugin. This also needs `GITHUB_USER` and `GITHUB_TOKEN` to be passed to the container.
+* Use `themes/download.list` to specify the name and URL of the zip file for the theme
+* Use `themes/gitrepo.list` to specify the name and URL of the git repository for the theme. This also needs `GITHUB_USER` and `GITHUB_TOKEN` to be passed to the container. 
+
 
 # How to use this image:
 * Clone this repository on your computer, and save it with the name of the website you are going to setup, e.g. `example.com` . 
@@ -95,4 +110,7 @@ GITHUB_USER=kamran
 GITHUB_TOKEN=base64encodedgithubtoken
 ```
 
-
+# General advice for security and performance:
+* Only use plugins and themes which are well reputed.
+* Fancy looks are always **less important** than security and performance.
+* If a plugin or theme increases CPU or memory utilization, then you should not use it.
