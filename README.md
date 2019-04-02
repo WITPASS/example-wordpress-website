@@ -55,7 +55,7 @@ $ tree
  
 Bring up the image using:
 ```
-$ docker-compose -f docker-compose.localpc build
+$ docker-compose -f docker-compose.localpc build --no-cache
 $ docker-compose -f docker-compose.localpc up -d
 ```
 

@@ -4,8 +4,8 @@ services:
     # If you want docker-compose to build an image instead of using a pre-built one,
     #   then, use "build" instruction instead of "image". 
     # If a Dockerfile is present in the same repository, then 'build' is the BEST option to use.
-    build: .
     # image:  witline/wordpress:5.1.1-php-7.3-apache-2.4-v-1.0
+    build: .
     labels:
       - traefik.enable=false
       - traefik.port=80
@@ -18,10 +18,15 @@ services:
     env_file:
       - app.env
 
-    # Adjust the path (on left hand side) according to the setup on your local work-computer.
+    # volumes: 
+    # To setup a persistent location for wordpress uploads,
+    #   , you should do the following in your home-directory:
+    #   $ mkdir /home/kamran/tmp/example.com/uploads -p
+
     volumes:
       - /home/kamran/tmp/example.com/uploads:/var/www/html/wp-content/uploads
 
+    # ports:
     # Disable ports directive when running on production system. Or,
     # Enable ports directive only on your local work computer.
     ports:
@@ -42,8 +47,8 @@ services:
 
       # To setup a persistent location for mysql (above), 
       #   , you should do the following in your home-directory: 
-      #   $ mkdir -p /home/kamran/tmp/mysql_data_dir
-      #   $ chmod 1777 /home/kamran/tmp/mysql_data_dir
+      #   $ mkdir /home/kamran/tmp/example.com/mysql-data-dir -p
+      #   $ chmod 1777 /home/kamran/tmp/example.com/mysql-data-dir 
 
 
 
