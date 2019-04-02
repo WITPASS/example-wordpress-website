@@ -43,7 +43,7 @@ services:
       MYSQL_USER: user_example_com
       MYSQL_PASSWORD: secret
     volumes:
-      - /home/kamran/tmp/mysql_data_dir:/var/lib/mysql
+      - /home/kamran/tmp/example.com/mysql-data-dir:/var/lib/mysql
 
       # To setup a persistent location for mysql (above), 
       #   , you should do the following in your home-directory: 
