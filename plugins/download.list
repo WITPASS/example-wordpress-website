@@ -2,12 +2,11 @@
 # PluginName   URL
 
 JetPack    https://downloads.wordpress.org/plugin/jetpack.7.1.1.zip
-WordfenceSecurity   https://downloads.wordpress.org/plugin/wordfence.7.2.4.zip
-YoastSEO  https://downloads.wordpress.org/plugin/wordpress-seo.zip
-WordfenceSecurity https://downloads.wordpress.org/plugin/wordfence.7.2.4.zip
-SmushImage  https://downloads.wordpress.org/plugin/wp-smushit.3.2.0.1.zip
-WPFastestCache  https://downloads.wordpress.org/plugin/wp-fastest-cache.0.8.9.2.zip
-InstagramFeed https://downloads.wordpress.org/plugin/instagram-feed.1.11.3.zip
-SocialMedia https://downloads.wordpress.org/plugin/ultimate-social-media-icons.2.2.0.zip
+# WordfenceSecurity   https://downloads.wordpress.org/plugin/wordfence.7.2.4.zip
+# YoastSEO  https://downloads.wordpress.org/plugin/wordpress-seo.zip
+# SmushImage  https://downloads.wordpress.org/plugin/wp-smushit.3.2.0.1.zip
+# WPFastestCache  https://downloads.wordpress.org/plugin/wp-fastest-cache.0.8.9.2.zip
+# InstagramFeed https://downloads.wordpress.org/plugin/instagram-feed.1.11.3.zip
+# SocialMedia https://downloads.wordpress.org/plugin/ultimate-social-media-icons.2.2.0.zip
 
 
