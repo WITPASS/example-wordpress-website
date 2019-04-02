@@ -35,6 +35,34 @@ $ tree
 [kamran@kworkhorse example.com]$
 ```
 
+# Persistent storage directory structure on your local/development computer:
+
+```
+[kamran@kworkhorse ~]$ mkdir -p /home/kamran/tmp/example.com/uploads 
+[kamran@kworkhorse ~]$ mkdir -p /home/kamran/tmp/example.com/mysql-data-dir
+[kamran@kworkhorse ~]$ chmod 1777 /home/kamran/tmp/example.com/mysql-data-dir
+```
+
+```
+[kamran@kworkhorse ~]$ ls -l /home/kamran/tmp/example.com/ 
+total 8
+drwxrwxrwt 2 kamran kamran 4096 Apr  2 21:53 mysql-data-dir
+drwxr-xr-x 3 kamran kamran 4096 Apr  2 21:44 uploads
+[kamran@kworkhorse tmp]$ 
+```
+
+Here is how it looks like:
+```
+[kamran@kworkhorse ~]$ pwd
+/home/kamran
+
+[kamran@kworkhorse ~]$ tree /home/kamran/tmp/example.com/ -L 1
+/home/kamran/tmp/example.com/
+├── mysql-data-dir
+└── uploads
+```
+
+
 # Configuring plugins and themes:
 * Use `plugins/download.list` to specify the name and URL of the zip file for the plugin
 * Use `plugins/gitrepo.list` to specify the name and URL of the git repository for the plugin. This also needs `GITHUB_USER` and `GITHUB_TOKEN` to be passed to the container.
@@ -44,8 +72,8 @@ $ tree
 
 # How to use this image:
 * Clone this repository on your computer, and save it with the name of the website you are going to setup, e.g. `example.com` . 
-* Setup a MySQL database to hold this site's database stuff, and/or keep the DB credentials handy. There are several ways to do it. To ease development, the `docker-compose.localpc` file contains a mysql service definition. Just adjust the path of persistent storage for mysql and use that as test mysql db for wordpress.
-* Setup a persistent storage on the computer to hold this website's **uploads** . This location will be specified in `docker-compose.yml.localpc` and/or `docker-compose.yml.server` files, and will be mounted at `/var/www/html/wp-content/uploads` when the container is started using `docker-compose up -d` command. An example of this directory is: `/home/kamran/container_data/example.com/uploads` . You will need to make sure that you do a frequent backup of this location.
+* Setup a MySQL database to hold this site's database stuff, and/or keep the DB credentials handy. There are several ways to do it. To ease development, the `docker-compose.yml.localpc` file contains a mysql service definition. Just adjust the path of persistent storage for mysql and use that as test mysql db for wordpress.
+* Setup a persistent storage on the computer to hold this website's **uploads** . This location will be specified in `docker-compose.yml.localpc` and/or `docker-compose.yml.server` files, and will be mounted at `/var/www/html/wp-content/uploads` when the container is started using `docker-compose up -d` command. An example of this directory is: `/home/kamran/tmp/example.com/uploads` . You will need to make sure that you do a frequent backup of this location.
 * If you intend to download any custom plugins or themes which are actually in a private fit repository, then you need to provide your github username and a github token. You can create a github token just for this specific person against your github user. If you don't then you do not need to provide github_user or github_token. 
 * Find the id of the OS user you are logged in as on your computer. This will be used to set correct ownership and permissions for the `uploads` directory.
 * Create `app.env` by copying `app.env.example` file. 
