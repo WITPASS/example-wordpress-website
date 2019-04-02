@@ -72,12 +72,14 @@ Here is how it looks like:
 
 # How to use this image:
 * Clone this repository on your computer, and save it with the name of the website you are going to setup, e.g. `example.com` . 
+ * **Note:** As soon as you are done cloning, remove the `.git/` directory completely from inside of this newly created directory. **This is mandatory.**. The `.git` directory contains the references to the original repository, and if you make changes, and do a `git push` , you will be actually pushing to the source repository ,which is not what we want you to do.  
+ * You can make copies of this repository on your local computer by using operating system's copy commands. In that case too, you will need to immediately delete the `.git/` directory from inside of the newly created directories.
 * Setup a MySQL database to hold this site's database stuff, and/or keep the DB credentials handy. There are several ways to do it. To ease development, the `docker-compose.yml.localpc` file contains a mysql service definition. Just adjust the path of persistent storage for mysql and use that as test mysql db for wordpress.
 * Setup a persistent storage on the computer to hold this website's **uploads** . This location will be specified in `docker-compose.yml.localpc` and/or `docker-compose.yml.server` files, and will be mounted at `/var/www/html/wp-content/uploads` when the container is started using `docker-compose up -d` command. An example of this directory is: `/home/kamran/tmp/example.com/uploads` . You will need to make sure that you do a frequent backup of this location.
 * If you intend to download any custom plugins or themes which are actually in a private fit repository, then you need to provide your github username and a github token. You can create a github token just for this specific person against your github user. If you don't then you do not need to provide github_user or github_token. 
 * Find the id of the OS user you are logged in as on your computer. This will be used to set correct ownership and permissions for the `uploads` directory.
 * Create `app.env` by copying `app.env.example` file. 
-* Adjust app.env with the environment variables related to this particular website.
+* Adjust `app.env` with the environment variables related to this particular website.
 * Make sure that you adjust `docker-compose.yml.localpc` file with correct values, while you are working on your local computer. The person who is deploying this website on the server is responsible for adjusting `docker-compose.yml.server` according to the setup/environment in the server.
 * Also ensure that the name resolution/DNS is in place. On your local computer you can use `/etc/hosts` , but for setup to work on the server, the website/domain should have correct DNS settings in the related domain registrar.
  
@@ -86,6 +88,7 @@ Bring up the image using:
 $ docker-compose -f docker-compose.localpc build --no-cache
 $ docker-compose -f docker-compose.localpc up -d
 ```
+**Note:** It is important to **build** the image *before* bringing it **up**. It is also important to use the `--no-cache` option when building the image.
 
 Check status of the container:
 ```
@@ -98,14 +101,14 @@ $ docker ps
 
 Check logs:
 ```
-$ docker logs -f <container-name|container-id>
+$ docker-compose -f docker-compose.localpc logs -f
 
 or
 
-$ docker-compose -f docker-compose.localpc logs -f
+$ docker logs -f <container-name|container-id>
 ```
 
-Stop and remove a container using `docker-compose`:
+Stop container and remove container image using `docker-compose`:
 ```
 $ docker-compose -f docker-compose.localpc stop  <container-name|container-id> 
 $ docker-compose -f docker-compose.localpc rm -f  <container-name|container-id> 
