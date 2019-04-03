@@ -85,14 +85,14 @@ Here is how it looks like:
  
 Bring up the image using:
 ```
-$ docker-compose -f docker-compose.localpc build --no-cache
-$ docker-compose -f docker-compose.localpc up -d
+$ docker-compose -f docker-compose.yml.localpc build --no-cache
+$ docker-compose -f docker-compose.yml.localpc up -d
 ```
 **Note:** It is important to **build** the image *before* bringing it **up**. It is also important to use the `--no-cache` option when building the image.
 
 Check status of the container:
 ```
-$ docker-compose -f docker-compose.localpc ps
+$ docker-compose -f docker-compose.yml.localpc ps
 
 or
 
@@ -101,7 +101,7 @@ $ docker ps
 
 Check logs:
 ```
-$ docker-compose -f docker-compose.localpc logs -f
+$ docker-compose -f docker-compose.yml.localpc logs -f
 
 or
 
@@ -110,8 +110,8 @@ $ docker logs -f <container-name|container-id>
 
 Stop container and remove container image using `docker-compose`:
 ```
-$ docker-compose -f docker-compose.localpc stop  <container-name|container-id> 
-$ docker-compose -f docker-compose.localpc rm -f  <container-name|container-id> 
+$ docker-compose -f docker-compose.yml.localpc stop  <container-name|container-id> 
+$ docker-compose -f docker-compose.yml.localpc rm -f  <container-name|container-id> 
 ```
 
 
