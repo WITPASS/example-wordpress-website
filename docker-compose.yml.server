@@ -4,8 +4,8 @@ services:
     # If you want docker-compose to build an image instead of using a pre-built one,
     # then, use "build" instruction instead of "image". 
     # If a Dockerfile is present in the same repository, then 'build' is the BEST option to use.
+    # image:  witline/wordpress:5.1.1-php-7.3-apache-2.4-v-1.0
     build: .
-    # image:  witline/wordpress-5.1.1-php-7.3-apache-2.4-v-1.0
     labels:
       # If you enable traefik.enabled=true, then make 100% sure that the names you provide 
       # in host are actually pointing to the traefik server (api.witpass.co.uk).
@@ -25,22 +25,11 @@ services:
       - /home/container_data/example.com/uploads:/var/www/html/wp-content/uploads
 
 
-    #########################################################################################################
-    # CPU and memory limitations:
-    # ---------------------------
-    # docker-compose version 3 supports CPU and memory limits only under 'deploy' subsection of any service.
-    # The worst thing is, that the 'deploy' section is only supported in docker swarm.
-    # So, essentially if we want to limit CPU and memory for a container, we should switch to kubernetes.
-    # The following is v2 format, and does not work under v3.
-    # cpu_percent: 5
-    # mem_limit: 50000000
-    # mem_reservation: 10m
-
-    ##########################################################################################################
-    #
-    # Below - developers don't need to modify the network definition, unless asked by the sysadmin.
-    #
-    #########################################################################################################
+#########################################################################################################
+#
+# Below - developers don't need to modify the network definition, unless asked by the sysadmin.
+#
+#########################################################################################################
 
     networks:
       # This 'uses' the proxy-net / services-network
@@ -49,8 +38,5 @@ services:
 networks:
   services-network:
     external: true
-
-
-
 
 
