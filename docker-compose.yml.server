@@ -22,7 +22,7 @@ services:
 
     # Adjust the path (on left hand side) according to the setup on the server.
     volumes:
-      - /home/container_data/example.com/uploads:/var/www/html/wp-content/uploads
+      - /home/containers-data/example.com/uploads:/var/www/html/wp-content/uploads
 
 
 #########################################################################################################
